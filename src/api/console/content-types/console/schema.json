@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "consoles",
+  "info": {
+    "singularName": "console",
+    "pluralName": "consoles",
+    "displayName": "Console"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "games": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::game.game",
+      "mappedBy": "console"
+    }
+  }
+}

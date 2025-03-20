@@ -1,0 +1,38 @@
+services:
+  game-station-cms:
+    container_name: game-sation-cms
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "1337:1337"
+    command: yarn develop
+    networks:
+      game-station:
+    depends_on:
+      - game-station-database
+    restart: unless-stopped
+
+  game-station-database:
+    image: mariadb:11.3.2
+    container_name: "game-station-database"
+    volumes:
+      - game-station-data:/var/lib/mysql
+      - .docker/mariadb/scripts/create-database.sql:/docker-entrypoint-initdb.d/create-database.sql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_PASSWORD: game@station
+      MYSQL_ROOT_PASSWORD: game@station
+    command: --init-file /docker-entrypoint-initdb.d/create-database.sql
+    networks:
+      game-station:
+    restart: unless-stopped
+
+networks:
+  game-station:
+    external: true
+
+volumes:
+  game-station-data:

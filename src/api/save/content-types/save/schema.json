@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "saves",
+  "info": {
+    "singularName": "save",
+    "pluralName": "saves",
+    "displayName": "Save"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "console": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::console.console"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "file": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

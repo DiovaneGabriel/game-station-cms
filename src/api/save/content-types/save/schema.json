@@ -4,29 +4,30 @@
   "info": {
     "singularName": "save",
     "pluralName": "saves",
-    "displayName": "Save"
+    "displayName": "Save",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
   },
   "attributes": {
-    "console": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::console.console"
-    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
     "file": {
-      "allowedTypes": [
-        "files"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "game": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::game.game"
     }
   }
 }

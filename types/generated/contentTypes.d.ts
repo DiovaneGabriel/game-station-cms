@@ -401,6 +401,7 @@ export interface ApiConsoleConsole extends Struct.CollectionTypeSchema {
 export interface ApiGameGame extends Struct.CollectionTypeSchema {
   collectionName: 'games';
   info: {
+    description: '';
     displayName: 'Game';
     pluralName: 'games';
     singularName: 'game';
@@ -410,6 +411,7 @@ export interface ApiGameGame extends Struct.CollectionTypeSchema {
   };
   attributes: {
     console: Schema.Attribute.Relation<'manyToOne', 'api::console.console'>;
+    cover: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -428,6 +430,7 @@ export interface ApiGameGame extends Struct.CollectionTypeSchema {
 export interface ApiSaveSave extends Struct.CollectionTypeSchema {
   collectionName: 'saves';
   info: {
+    description: '';
     displayName: 'Save';
     pluralName: 'saves';
     singularName: 'save';
@@ -436,11 +439,11 @@ export interface ApiSaveSave extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    console: Schema.Attribute.Relation<'oneToOne', 'api::console.console'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     file: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
+    game: Schema.Attribute.Relation<'oneToOne', 'api::game.game'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::save.save'> &
       Schema.Attribute.Private;

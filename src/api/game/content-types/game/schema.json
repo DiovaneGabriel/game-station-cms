@@ -4,7 +4,8 @@
   "info": {
     "singularName": "game",
     "pluralName": "games",
-    "displayName": "Game"
+    "displayName": "Game",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,12 +22,19 @@
       "inversedBy": "games"
     },
     "rom": {
-      "allowedTypes": [
-        "files"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "cover": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
